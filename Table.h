@@ -15,7 +15,7 @@
 
 class Table {
 public:
-    Table(unsigned int size);
+    Table(unsigned int const size);
     Table(const Table& orig);
     virtual ~Table();
 private:

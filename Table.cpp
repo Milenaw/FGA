@@ -7,8 +7,8 @@
 
 #include "Table.h"
 
-Table::Table(unsigned int size):size(size){
-    this->table = new Element*[size][size]; //Erstellt die Tabelle im Heap
+Table::Table(unsigned int const size):size(size){
+    this->table = new Element[size*size]; //Erstellt die Tabelle im Heap
 }
 
 Table::Table(const Table& orig) {
