@@ -6,11 +6,13 @@
  */
 
 #include "ElementWrapper.h"
+#include "Element.h"
 
-ElementWrapper::ElementWrapper() {
+ElementWrapper::ElementWrapper(Element& element): element(element) {
 }
 
-ElementWrapper::ElementWrapper(const ElementWrapper& orig) {
+ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element){
+    
 }
 
 ElementWrapper::~ElementWrapper() {
