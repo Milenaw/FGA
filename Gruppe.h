@@ -13,35 +13,31 @@
 #include <iostream>
 #include <string>
 
+#include "ElementWrapper.h"
+
 using namespace std;
 
 class Element;
 
 class Gruppe {
 public:
-    Gruppe(const std::vector<Element>& elemente);
+    Gruppe();
+    bool checkClosure();
     bool checkAsso();
-    bool checkNeutral();//Prüft nicht selber auf Existens, da dies schon von getE() erledigt wurde
-    Element getE();
+    bool checkNeutral();
     bool checkInvers();
-    void writeVector(string filename);
-    vector<Element> readVector(string filename);
+    void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
+    string getE(); //Gitb das neutrale Element aus
 
 private:
-    //Gruppenaxiome: Abgeschlossenheit ist durch den konstruktor schon sichergestellt
-
+    bool closure; //Abgeschlossen?
     bool asso = false;//assoziativ?
     bool neutral = false;//Gibt es neutrales Element?
     bool inverse = false;//existieren Inverse?
 
-    int order; //Ordnung der Gruppe
-    vector<Element> elemente; //Die Elemente der Gruppe
-    vector<const Element*> table; //Die Verknüpungstabelle der Gruppe
-    vector<int> invers; //Die Inversen
-    int I(int first, int secound);
-    const Element* verknupfe(const Element* first, const Element* second);
-    int getIndexFromElement(const Element& element);
-    int e;
+    int order = 0; //Ordnung der Gruppe
+    EW* e; //Das neutrale Element
+    
 };
 
 #endif	/* GRUPPE_H */

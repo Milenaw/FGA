@@ -27,7 +27,7 @@ string Element::serialize() {
     return this->toString();
 }
 
-bool Element::operator ==(const Element& secound) {
+bool Element::operator ==(const Element& secound) const{
     return this->number == secound.number;
 }
 
