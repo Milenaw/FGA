@@ -1,6 +1,8 @@
 /*
  * File:   Element.h
  * Author: benjamin
+ * 
+ * Klasse die vom User implementiert wird. Wichtig dabei ist ein Vergleichsoperator, der Konstruktor und der Verknüpfungskonstruktor.
  *
  * Created on September 7, 2015, 9:07 PM
  */
@@ -15,17 +17,21 @@ using namespace std;
 
 class Element {
 public:
-	int number;			//Wäre cool wenn wir hieraus eine Template-Klase machen würden, und dies dann beliebigen Typ hat
-	Element();
-    Element(int number);
+    int id = 0; //Eine Id, soll vom Benutzer ignoriert werden (will deswegen nicht erben)
+    
+    Element(int number); //Der Konstruktor, wird vom Benutzer definiert und implementiert
+    
     Element(const Element& first,const Element& secound); //Konstruktor aus der Verknüpfung
+    
     bool operator==(const Element& secound); //Vergleichsoperator
-    Element operator*(const Element& secound);
-    static vector<Element> getElements();
-    string toString(void);
-    Element(string string);
+    
+    string toString(void); // Für die Ausgabe
+    
+    Element(string string); //Deserialisieren
+    
+    string serialize(); //Serialisieren (kann toString benutzen, aber auch unabhängig implementiert werden, wenn toString nicht alle informationen enthält)
 private:
-
+    int number; //Stellt die Restklasse da
 };
 
 #endif	/* ELEMENT_H */

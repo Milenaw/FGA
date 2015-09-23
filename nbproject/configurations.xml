@@ -5,8 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Element.h</itemPath>
+      <itemPath>ElementWrapper.h</itemPath>
       <itemPath>Gruppe.h</itemPath>
-      <itemPath>Table.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,8 +16,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Element.cpp</itemPath>
+      <itemPath>ElementWrapper.cpp</itemPath>
       <itemPath>Gruppe.cpp</itemPath>
-      <itemPath>Table.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -50,13 +50,13 @@
       </item>
       <item path="Element.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ElementWrapper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ElementWrapper.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Gruppe.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Gruppe.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Table.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Table.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -85,13 +85,13 @@
       </item>
       <item path="Element.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ElementWrapper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ElementWrapper.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Gruppe.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Gruppe.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Table.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Table.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
