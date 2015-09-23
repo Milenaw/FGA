@@ -16,7 +16,7 @@ Element::Element(int number) {
 
 string Element::toString() {
     string text = "Restklasse: ";
-    return text += toString(this->number);
+    return text += std::to_string(this->number);
 }
 
 Element::Element(string str) {

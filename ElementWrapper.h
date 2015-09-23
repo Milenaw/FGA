@@ -13,7 +13,8 @@ public:
     ElementWrapper();
     ElementWrapper(const ElementWrapper& orig);
     virtual ~ElementWrapper();
-    
+    bool operator==(const ElementWrapper& secound) const;
+    ElementWrapper& operator+(const ElementWrapper& secound) const;
     
 private:
 
