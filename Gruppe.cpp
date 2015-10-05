@@ -17,7 +17,7 @@ void Gruppe::addElement(const Element& element) {
     this->elemente.push_back(add);
     order++;
 }
-//Nur ein Test
+
 bool Gruppe::create() {
     for (EW i : elemente) {
         if (!i.calculate(&elemente)) {
