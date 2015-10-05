@@ -24,11 +24,11 @@ bool Element::operator ==(const Element& secound) const{
 }
 
 Element::Element(const Element& first,const Element& secound) {
-    this->number = (first.number + secound.number) % 3; //Das Stellt die Restklassen modulo 19 dar.
+    this->number = (first.number * secound.number) % 5; //Das Stellt die Restklassen modulo 19 dar.
 }
 
 void Element::fill(Gruppe& gruppe) {
-    for (int i = 0; i <3; ++i) {
+    for (int i = 1; i <5; ++i) {
         Element add(i);
         gruppe.addElement(add);
     }

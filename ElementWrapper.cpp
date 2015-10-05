@@ -40,4 +40,5 @@ bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
             return false; //Die Gruppe ist nicht abgeschlossen
         }
     }
+    return true;
 }

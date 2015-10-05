@@ -18,9 +18,7 @@ using namespace std;
 class Gruppe;
 
 class Element {
-public:
-    bool flag = true; //Dieses Flag ist wahr, wenn direkt mit diesen Objekte gearbeitet wird (bei Restklassen zum Beispiel, da da die Berechnungen und der Speicher billig sind). Bei false abstrahiert die Wrapperklasse und cacht diese Rechnungen, die erstellung dauert aber eheblich länger.
-    
+public:    
     Element(int number); //Der Konstruktor, wird vom Benutzer definiert und implementiert
     
     Element(const Element& first,const Element& secound); //Konstruktor aus der Verknüpfung
