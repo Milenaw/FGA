@@ -15,6 +15,8 @@
 
 using namespace std;
 
+class Gruppe;
+
 class Element {
 public:
     bool flag = true; //Dieses Flag ist wahr, wenn direkt mit diesen Objekte gearbeitet wird (bei Restklassen zum Beispiel, da da die Berechnungen und der Speicher billig sind). Bei false abstrahiert die Wrapperklasse und cacht diese Rechnungen, die erstellung dauert aber eheblich länger.
@@ -30,6 +32,8 @@ public:
     Element(string string); //Deserialisieren
     
     string serialize(); //Serialisieren (kann toString benutzen, aber auch unabhängig implementiert werden, wenn toString nicht alle informationen enthält)
+    
+    static void fill(Gruppe& gruppe);
 private:
     int number; //Stellt die Restklasse da
 };

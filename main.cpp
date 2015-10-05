@@ -14,8 +14,8 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    Gruppe gruppe();
-    //Hier müssen die Elemente geaddet werden
-    //gruppe.create();
+    Gruppe gruppe;
+    Element::fill(gruppe);
+    cout << gruppe.create() << endl;
     
 }

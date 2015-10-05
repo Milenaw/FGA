@@ -19,18 +19,17 @@ string Element::toString() {
     return text += std::to_string(this->number);
 }
 
-Element::Element(string str) {
-    this->number = stoi(str);
-}
-
-string Element::serialize() {
-    return this->toString();
-}
-
 bool Element::operator ==(const Element& secound) const{
     return this->number == secound.number;
 }
 
 Element::Element(const Element& first,const Element& secound) {
-    this->number = (first.number * secound.number) % 1009; //Das Stellt die Restklassen modulo 7 dar.
+    this->number = (first.number + secound.number) % 3; //Das Stellt die Restklassen modulo 19 dar.
+}
+
+void Element::fill(Gruppe& gruppe) {
+    for (int i = 0; i <3; ++i) {
+        Element add(i);
+        gruppe.addElement(add);
+    }
 }
