@@ -27,3 +27,13 @@ bool Gruppe::create() {
     return true;
 }
 
+bool Gruppe::checkAsso() {
+    for (EW a : elemente) {
+        for (EW b: elemente) {
+            for (EW c: elemente) {
+                EW a = b+c;
+            }
+        }
+    }
+    return true;
+}

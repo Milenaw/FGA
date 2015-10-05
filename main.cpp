@@ -17,5 +17,6 @@ int main(int argc, char** argv) {
     Gruppe gruppe;
     Element::fill(gruppe);
     cout << gruppe.create() << endl;
+    cout << gruppe.checkAsso() << endl;
     
 }

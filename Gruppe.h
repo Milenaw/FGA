@@ -22,12 +22,11 @@ class Element;
 class Gruppe {
 public:
     Gruppe();
-    bool checkClosure();
     bool checkAsso();
     bool checkNeutral();
     bool checkInvers();
     void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
-    bool create(); //Erstellt die Verknüpfungstabelle
+    bool create(); //Erstellt die Verknüpfungstabelle, gibt false zurück, fals die Gruppe nicht abgeschlossen ist
     string getE(); //Gitb das neutrale Element aus
 
 private:
