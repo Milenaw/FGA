@@ -18,7 +18,7 @@ ElementWrapper::~ElementWrapper() {
 }
 
 bool ElementWrapper::operator ==(const ElementWrapper& secound) const {
-    return this->element == secound.element;
+    
 }
 
 ElementWrapper* ElementWrapper::operator +(const ElementWrapper& secound) const {

@@ -5,11 +5,18 @@
  * Created on September 7, 2015, 9:11 PM
  */
 
-#include "Gruppe.h"
-#include "Element.h"
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-#include <string>
+#include <bits/stl_vector.h>
 
-using namespace std;
+#include "Gruppe.h"
+#include "ElementWrapper.h"
+
+Gruppe::Gruppe() {
+    
+}
+
+Gruppe::addElement(const Element& element) {
+    EW add(element, order);
+    this->elemente.push_back(add);
+    order++;
+}
+

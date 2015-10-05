@@ -37,6 +37,7 @@ private:
 
     int order = 0; //Ordnung der Gruppe
     EW* e; //Das neutrale Element
+    std::vector<EW> elemente;
     
 };
 

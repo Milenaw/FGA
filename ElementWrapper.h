@@ -12,14 +12,16 @@
 
 class ElementWrapper {
 public:
-    ElementWrapper(Element* element);
+    ElementWrapper(Element& element, int id);
     ElementWrapper(const ElementWrapper& orig);
     virtual ~ElementWrapper();
     bool operator==(const ElementWrapper& secound) const;
     ElementWrapper* operator+(const ElementWrapper& secound) const;
     int getId();
+    void calculate(const std::vector<ElementWrapper>* alle);
 private:
     Element element; //Hier ist das Element drin, alles andere verweist auf diese Speicherstelle
+    std::vector<ElementWrapper> links;
 };
 
 typedef ElementWrapper EW;
