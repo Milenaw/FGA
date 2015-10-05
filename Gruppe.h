@@ -27,6 +27,7 @@ public:
     bool checkNeutral();
     bool checkInvers();
     void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
+    bool create(); //Erstellt die Verknüpfungstabelle
     string getE(); //Gitb das neutrale Element aus
 
 private:

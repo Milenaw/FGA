@@ -5,8 +5,6 @@
  * Created on September 7, 2015, 9:11 PM
  */
 
-#include <bits/stl_vector.h>
-
 #include "Gruppe.h"
 #include "ElementWrapper.h"
 
@@ -14,9 +12,18 @@ Gruppe::Gruppe() {
     
 }
 
-Gruppe::addElement(const Element& element) {
+void Gruppe::addElement(const Element& element) {
     EW add(element, order);
     this->elemente.push_back(add);
     order++;
+}
+
+bool Gruppe::create() {
+    for (EW i : elemente) {
+        if (!i.calculate(&elemente)) {
+            return false;
+        }
+    }
+    return true;
 }
 
