@@ -13,6 +13,14 @@ ElementWrapper::ElementWrapper(const Element& element, int id): element(element)
 }
 
 ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element), id(orig.id){ 
+    //std::cout << "Ich werde kopiert" << std::endl;
+}
+
+ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
+    
+    //std::cout << "Ich werde zugewiesen" << std::endl;
+    
+    return *this;
 }
 
 ElementWrapper::~ElementWrapper() {
@@ -22,19 +30,20 @@ bool ElementWrapper::operator ==(const ElementWrapper& secound) const {
     return this->id == secound.id;
 }
 
-ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
-    std::cout << this->links[secound.id] << std::endl;
-    return *this->links[secound.id];
+const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
+    //std::cout << this->links.at(secound.id) << std::endl;
+    return *(this->links[secound.id]);
 }
 
 bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
     for (EW i : *alle) {
         bool temp = false;
         Element result(this->element, i.element);
-        for (EW such : *alle) {
-            if (result == such.element) {
-                std::cout << &such << std::endl;
-                links.push_back(&such);
+        for (int such = 0; such < alle->size() ; ++such) {
+            if (result == (alle->at(such)).element) {
+                const EW* adresse = &(alle->at(such));
+                //std::cout << adresse << std::endl;
+                links.push_back(adresse);
                 temp = true;
                 break;
             }

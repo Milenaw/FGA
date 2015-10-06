@@ -19,8 +19,8 @@ void Gruppe::addElement(const Element& element) {
 }
 
 bool Gruppe::create() {
-    for (EW i : elemente) {
-        if (!i.calculate(&elemente)) {
+    for (int i = 0; i < elemente.size();++i) {
+        if (!elemente[i].calculate(&elemente)) {
             return false;
         }
     }
@@ -28,10 +28,15 @@ bool Gruppe::create() {
 }
 
 bool Gruppe::checkAsso() {
-    for (EW a : elemente) {
-        for (EW b: elemente) {
-            for (EW c: elemente) {
-                EW a = b+c;
+    for (int az = 0 ; az < elemente.size() ;++az) {
+        for (int bz = 1 ; bz < elemente.size() ;++bz) {
+            for (int cz = 2 ; cz < elemente.size() ;++cz) {
+                EW& a = elemente[az];
+                EW& b = elemente[bz];
+                EW& c = elemente[cz];
+                if (!((a+b)+c == a +(b+c))) {
+                    return false;
+                }
             }
         }
     }
