@@ -27,7 +27,7 @@ public:
     bool checkInvers();
     void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
     bool create(); //Erstellt die Verknüpfungstabelle, gibt false zurück, fals die Gruppe nicht abgeschlossen ist
-    string getE(); //Gitb das neutrale Element aus
+    const string getE() const; //Gitb das neutrale Element aus
 
 private:
     bool closure; //Abgeschlossen?

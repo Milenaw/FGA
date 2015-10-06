@@ -24,6 +24,7 @@ bool Gruppe::create() {
             return false;
         }
     }
+    closure = true;
     return true;
 }
 
@@ -37,5 +38,29 @@ bool Gruppe::checkAsso() {
             }
         }
     }
+    asso = true;
     return true;
+}
+
+bool Gruppe::checkNeutral() {
+    for (auto& e : elemente) { //Über alle Elemente iterieren, die neutral sein könnten
+        bool t = true;
+        for (auto& a : elemente) { //Prüfen ob e neutral ist
+            if (!(e+a == a && a + e == a)) { //e ist nicht neutral
+                t = false;
+                break;
+            }
+        }
+        if (t) {
+            neutral = true;
+            this->e = &e;
+            return true;
+        }
+    }
+    return false;
+}
+
+const string Gruppe::getE() const {
+    string r = e ->toString();
+    return r;
 }

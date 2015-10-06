@@ -54,3 +54,7 @@ bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
     }
     return true;
 }
+
+string ElementWrapper::toString() const{
+    return element.toString();
+}

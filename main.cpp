@@ -18,5 +18,7 @@ int main(int argc, char** argv) {
     Element::fill(gruppe);
     cout << gruppe.create() << endl;
     cout << gruppe.checkAsso() << endl;
+    cout << gruppe.checkNeutral() << endl;
+    cout << gruppe.getE() << endl;
     
 }
