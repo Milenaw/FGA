@@ -14,11 +14,9 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    Gruppe gruppe;
-    Element::fill(gruppe);
-    cout << gruppe.create() << endl;
-    cout << gruppe.checkAsso() << endl;
-    cout << gruppe.checkNeutral() << endl;
-    cout << gruppe.getE() << endl;
+   vector<Element> menge;
+   for(int i=1; i<5;i++)
+	   menge[i]=Element[i];
+   Gruppe gruppe(menge);
     
 }

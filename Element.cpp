@@ -14,7 +14,7 @@ Element::Element(int number) {
     this->number = number;
 }
 
-string Element::toString() const {
+string Element::toString() {
     string text = "Restklasse: ";
     return text += std::to_string(this->number);
 }
@@ -24,12 +24,5 @@ bool Element::operator ==(const Element& secound) const{
 }
 
 Element::Element(const Element& first,const Element& secound) {
-    this->number = (first.number + secound.number) % 5; //Das Stellt die Restklassen modulo 19 dar.
-}
-
-void Element::fill(Gruppe& gruppe) {
-    for (int i = 0; i < 5 ; ++i) {
-        Element add(i);
-        gruppe.addElement(add);
-    }
+    this->number = (first.number * secound.number) % 5; //Das Stellt die Restklassen modulo 19 dar.
 }

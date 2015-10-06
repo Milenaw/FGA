@@ -25,13 +25,12 @@ public:
     
     bool operator==(const Element& secound) const; //Vergleichsoperator
     
-    string toString(void) const; // Für die Ausgabe
+    string toString(void); // Für die Ausgabe
     
     Element(string string); //Deserialisieren
     
     string serialize(); //Serialisieren (kann toString benutzen, aber auch unabhängig implementiert werden, wenn toString nicht alle informationen enthält)
-    
-    static void fill(Gruppe& gruppe);
+
 private:
     int number; //Stellt die Restklasse da
 };

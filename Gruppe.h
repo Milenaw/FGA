@@ -22,15 +22,16 @@ class Element;
 class Gruppe {
 public:
     Gruppe();
+    Gruppe(vector<const Element&> elemente);
     bool checkAsso();
     bool checkNeutral();
     bool checkInvers();
     void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
-    bool create(); //Erstellt die Verknüpfungstabelle, gibt false zurück, fals die Gruppe nicht abgeschlossen ist
-    const string getE() const; //Gitb das neutrale Element aus
+    void create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
+    bool getE(); //Gits das neutrale Element?
 
 private:
-    bool closure; //Abgeschlossen?
+    bool closure=false; //Abgeschlossen?
     bool asso = false;//assoziativ?
     bool neutral = false;//Gibt es neutrales Element?
     bool inverse = false;//existieren Inverse?

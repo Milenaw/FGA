@@ -12,20 +12,40 @@ Gruppe::Gruppe() {
     
 }
 
+Gruppe::Gruppe(std::vector<const Element&> elemente) {
+	for(auto& a: elemente)
+		this->addElement(a);
+	if(!this->create())
+		std::cerr<<"Nicht abgeschlossen\n"
+	this->getE();
+	if(!this->neutral)
+		std::cerr<<"Kein neutrales Element\n"
+	if(!this->checkAsso())
+		std::cerr<<"Nicht assoziativ\n"
+	if(!this->checkInvers())
+		std::cerr<<"Es existieren nicht für alle Elemente inverse"
+}
+
 void Gruppe::addElement(const Element& element) {
+	for(auto& a: elemente) {
+		if(element==a) {
+			std::clog<<"Mehrfaches Element ignoriert";
+			return;
+		}
+	}
     EW add(element, order);
     this->elemente.push_back(add);
     order++;
 }
 
-bool Gruppe::create() {
+void Gruppe::create() {
     for (int i = 0; i < elemente.size();++i) {
         if (!elemente[i].calculate(&elemente)) {
-            return false;
+            closure=false;
+            return;
         }
     }
-    closure = true;
-    return true;
+    closure=true;
 }
 
 bool Gruppe::checkAsso() {
@@ -38,29 +58,34 @@ bool Gruppe::checkAsso() {
             }
         }
     }
-    asso = true;
     return true;
 }
 
-bool Gruppe::checkNeutral() {
-    for (auto& e : elemente) { //Über alle Elemente iterieren, die neutral sein könnten
-        bool t = true;
-        for (auto& a : elemente) { //Prüfen ob e neutral ist
-            if (!(e+a == a && a + e == a)) { //e ist nicht neutral
-                t = false;
-                break;
-            }
-        }
-        if (t) {
-            neutral = true;
-            this->e = &e;
-            return true;
-        }
-    }
-    return false;
+bool Gruppe::getE() {
+	for(auto& a : elemente) {
+		int count=0;
+		for(auto& b : elemente){
+			if(a==a+b) {
+				count++;
+			}
+		}
+		if(count==this->order) {
+			this->e=a;
+			return true;
+		}
+	}
+	return false;
 }
 
-const string Gruppe::getE() const {
-    string r = e ->toString();
-    return r;
+bool Gruppe::checkInvers() {
+	for(auto& a : elemente) {
+		bool test=false;
+		for(auto& b : elemente) {
+			if(a+b==this->e)
+				test=true;
+		}
+		if(test==false)
+			return false;
+	}
+	return true;
 }

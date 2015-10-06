@@ -9,7 +9,6 @@
 #define	ELEMENTWRAPPER_H
 
 #include "Element.h"
-#include <string>
 
 class ElementWrapper {
 public:
@@ -19,7 +18,6 @@ public:
     bool operator==(const ElementWrapper& secound) const;
     ElementWrapper& operator=(const ElementWrapper& left);
     const ElementWrapper& operator+(const ElementWrapper& secound) const;
-    string toString() const;
     int getId();
     bool calculate(const std::vector<ElementWrapper>* alle);
 private:
