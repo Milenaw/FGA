@@ -28,12 +28,9 @@ bool Gruppe::create() {
 }
 
 bool Gruppe::checkAsso() {
-    for (int az = 0 ; az < elemente.size() ;++az) {
-        for (int bz = 1 ; bz < elemente.size() ;++bz) {
-            for (int cz = 2 ; cz < elemente.size() ;++cz) {
-                EW& a = elemente[az];
-                EW& b = elemente[bz];
-                EW& c = elemente[cz];
+    for (auto& a : elemente) {
+        for (auto& b : elemente) {
+            for (auto& c : elemente) {
                 if (!((a+b)+c == a +(b+c))) {
                     return false;
                 }

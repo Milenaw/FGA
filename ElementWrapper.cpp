@@ -13,7 +13,9 @@ ElementWrapper::ElementWrapper(const Element& element, int id): element(element)
 }
 
 ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element), id(orig.id){ 
-    //std::cout << "Ich werde kopiert" << std::endl;
+    if (orig.links.size() != 0) {
+        std::cerr << "Fehler, EW kopiert, Links Liste verloren gegangen " << orig.links.size() << std::endl;
+    }
 }
 
 ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
@@ -31,18 +33,16 @@ bool ElementWrapper::operator ==(const ElementWrapper& secound) const {
 }
 
 const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
-    //std::cout << this->links.at(secound.id) << std::endl;
     return *(this->links[secound.id]);
 }
 
 bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
-    for (EW i : *alle) {
+    for (auto& i : *alle) {
         bool temp = false;
         Element result(this->element, i.element);
         for (int such = 0; such < alle->size() ; ++such) {
             if (result == (alle->at(such)).element) {
                 const EW* adresse = &(alle->at(such));
-                //std::cout << adresse << std::endl;
                 links.push_back(adresse);
                 temp = true;
                 break;
