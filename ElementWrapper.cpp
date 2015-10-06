@@ -9,8 +9,6 @@
 #include "ElementWrapper.h"
 #include "Element.h"
 
-//Der Zweite Teil des Git Tests
-
 ElementWrapper::ElementWrapper(const Element& element, int id): element(element), id(id) {
 }
 
