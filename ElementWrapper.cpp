@@ -32,6 +32,10 @@ bool ElementWrapper::operator ==(const ElementWrapper& secound) const {
     return this->id == secound.id;
 }
 
+bool ElementWrapper::operator ==(const Element& secound) const {
+    return this->element == secound;
+}
+
 const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
     return *(this->links[secound.id]);
 }
@@ -53,4 +57,8 @@ bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
         }
     }
     return true;
+}
+
+string ElementWrapper::toString() const{
+    return element.toString();
 }

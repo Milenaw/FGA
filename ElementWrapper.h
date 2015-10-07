@@ -16,7 +16,9 @@ public:
     ElementWrapper(const ElementWrapper& orig);
     virtual ~ElementWrapper();
     bool operator==(const ElementWrapper& secound) const;
+    bool operator==(const Element& secound) const;
     ElementWrapper& operator=(const ElementWrapper& left);
+    string toString() const;
     const ElementWrapper& operator+(const ElementWrapper& secound) const;
     int getId();
     bool calculate(const std::vector<ElementWrapper>* alle);

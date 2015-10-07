@@ -25,7 +25,7 @@ public:
     
     bool operator==(const Element& secound) const; //Vergleichsoperator
     
-    string toString(void); // Für die Ausgabe
+    string toString(void) const; // Für die Ausgabe
     
     Element(string string); //Deserialisieren
     

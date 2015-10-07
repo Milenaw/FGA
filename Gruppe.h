@@ -22,13 +22,13 @@ class Element;
 class Gruppe {
 public:
     Gruppe();
-    Gruppe(vector<const Element&> elemente);
+    Gruppe(vector<Element>& elemente);
     bool checkAsso();
     bool checkNeutral();
     bool checkInvers();
     void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
-    void create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
-    bool getE(); //Gits das neutrale Element?
+    bool create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
+    string getE(); //Gits das neutrale Element?
 
 private:
     bool closure=false; //Abgeschlossen?

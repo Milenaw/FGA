@@ -15,8 +15,10 @@ using namespace std;
 
 int main(int argc, char** argv) {
    vector<Element> menge;
-   for(int i=1; i<5;i++)
-	   menge[i]=Element[i];
+   for(int i=1; i<5;i++) {
+       Element t(i);
+       menge.push_back(i);
+   }
    Gruppe gruppe(menge);
     
 }
