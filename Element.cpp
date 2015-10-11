@@ -7,6 +7,7 @@
 
 #include "Element.h"
 #include "Gruppe.h"
+#include <sstream>
 
 using namespace std;
 
@@ -16,7 +17,11 @@ Element::Element(int number) {
 
 string Element::toString() const {
     string text = "Restklasse: ";
-    return text += std::to_string(this->number);
+    stringstream ss;
+    ss<<this->number;
+    string str;
+    ss>>str;
+    return text +=str;
 }
 
 bool Element::operator ==(const Element& secound) const{

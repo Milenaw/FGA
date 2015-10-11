@@ -18,33 +18,32 @@ ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element
     }
 }
 
-ElementWrapper(const string& strid) {
-	element=
-}
-
 ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
     
     //std::cout << "Ich werde zugewiesen" << std::endl;
     
-    return *this;
+    this->element=left.element;
+    this->id=left.id;
+    this->inverse=left.inverse;
+    this->links=left.links;
 }
 
 ElementWrapper::~ElementWrapper() {
 }
 
-bool ElementWrapper::operator ==(const ElementWrapper& secound) const {
-    return this->id == secound.id;
+bool ElementWrapper::operator ==(const ElementWrapper& second) const {
+    return this->id == second.id;
 }
 
-bool ElementWrapper::operator ==(const Element& secound) const {
-    return this->element == secound;
+bool ElementWrapper::operator ==(const Element& second) const {
+    return this->element == second;
 }
 
-const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
-    return *(this->links[secound.id]);
+const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& second) const {
+    return *(this->links[second.id]);
 }
-const ElementWrapper& ElementWrapper::operator -(const ElementWrapper& secound) const {
-    return *(this->links[secound->inverse]);
+const ElementWrapper& ElementWrapper::operator -(const ElementWrapper& second) const {
+    return *(this->links[second.inverse]);
 }
 
 bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {

@@ -104,7 +104,7 @@ bool Gruppe::checkInvers() {
 		bool test=false;
 		for(auto& b : elemente) {
 			if(a+b==*(this->e))
-				a->inverse=b.id;
+				a.inverse=b.inverse;
 				test=true;
 		}
 		if(!test)
