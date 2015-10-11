@@ -8,6 +8,7 @@
 #include "Element.h"
 #include "Gruppe.h"
 #include <sstream>
+//#include <string>
 
 using namespace std;
 
@@ -21,7 +22,8 @@ string Element::toString() const {
     ss<<this->number;
     string str;
     ss>>str;
-    return text +=str;
+    return text+=str;
+    //return text +=to_string(this->number);
 }
 
 bool Element::operator ==(const Element& secound) const{

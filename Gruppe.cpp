@@ -9,30 +9,37 @@
 #include "ElementWrapper.h"
 
 Gruppe::Gruppe() {
-    
+	order=0;
 }
 
 Gruppe::Gruppe(std::vector<Element>& elemente) {
-    for(auto a: elemente) {
+	asso=false;
+	closure=false;
+	order=0;
+	bool group=false;
+	for(auto a: elemente) {
         this->addElement(a);
     }
     if(!this->create()) {
-        std::cerr<<"Nicht abgeschlossen"<<std::endl; //endl, do a flush on the console, while \n just do a new line
-        return;
+        std::cerr<<"Nicht abgeschlossen"<<std::endl;
+        std::clog<<"Terminating group creation, since the \'group\' is not closed."<<endl;
     }
-    if(!this->checkNeutral()) {
+    else if(!this->checkNeutral()) {
         std::cerr<<"Kein neutrales Element"<<std::endl;
-        return;
+        std::clog<<"Terminating group creation, since the \'group\' is has no neutral element."<<endl;
     }
-    if(!this->checkAsso()) {
+    else if(!this->checkAsso()) {
         std::cerr<<"Nicht assoziativ"<<std::endl;
-        return;
+        std::clog<<"Terminating group creation, since the \'group\' is not associative."<<endl;
     }
-    if(!this->checkInvers()) {
+    else if(!this->checkInvers()) {
         std::cerr<<"Es existieren nicht für alle Elemente inverse"<<std::endl;
-        return;
+        std::cerr<<"Terminating group creation, since not all elements of the \'group\' have inverse elements."<<endl;
     }
-    std::cout<<"Gruppe wurde erfolgreich erstellt"<<std::endl;
+    else {
+    std::cout<<"Group creation successful."<<endl;
+    }
+    throw 6;
 }
 
 void Gruppe::addElement(const Element& element) {
@@ -48,7 +55,7 @@ void Gruppe::addElement(const Element& element) {
 }
 
 bool Gruppe::create() {
-    for (int i = 0; i < elemente.size();++i) {
+    for (unsigned int i = 0; i < elemente.size();++i) {
         if (!elemente[i].calculate(&elemente)) {
             closure=false;
             return false;;

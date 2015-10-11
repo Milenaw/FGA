@@ -22,10 +22,11 @@ ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
     
     //std::cout << "Ich werde zugewiesen" << std::endl;
     
-    this->element=left.element;
-    this->id=left.id;
-    this->inverse=left.inverse;
-    this->links=left.links;
+    //this->element=left.element;
+    //this->id=left.id;
+    //this->inverse=left.inverse;
+    //this->links=left.links;
+	return *this;
 }
 
 ElementWrapper::~ElementWrapper() {
@@ -50,7 +51,7 @@ bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
     for (auto& i : *alle) {
         bool temp = false;
         Element result(this->element, i.element);
-        for (int such = 0; such < alle->size() ; ++such) {
+        for (unsigned int such = 0; such < alle->size() ; ++such) {
             if (result == (alle->at(such)).element) {
                 const EW* adresse = &(alle->at(such));
                 links.push_back(adresse);

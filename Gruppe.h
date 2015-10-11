@@ -36,7 +36,7 @@ private:
     bool neutral = false;//Gibt es neutrales Element?
     bool inverse = false;//existieren Inverse?
 
-    int order = 0; //Ordnung der Gruppe
+    int order = -1; //Ordnung der Gruppe
     EW* e; //Das neutrale Element
     std::vector<EW> elemente;
        
