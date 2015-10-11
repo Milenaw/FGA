@@ -100,13 +100,14 @@ string Gruppe::getE() {
 }
 
 bool Gruppe::checkInvers() {
-	for(auto& a : elemente) {
+	for(auto& a : elemente) {//suche nach dem Inversen von a
 		bool test=false;
 		for(auto& b : elemente) {
 			if(a+b==*(this->e))
+				a->inverse=b.id;
 				test=true;
 		}
-		if(test==false)
+		if(!test)
 			return false;
 	}
 	return true;

@@ -18,6 +18,10 @@ ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element
     }
 }
 
+ElementWrapper(const string& strid) {
+	element=
+}
+
 ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
     
     //std::cout << "Ich werde zugewiesen" << std::endl;
@@ -38,6 +42,9 @@ bool ElementWrapper::operator ==(const Element& secound) const {
 
 const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& secound) const {
     return *(this->links[secound.id]);
+}
+const ElementWrapper& ElementWrapper::operator -(const ElementWrapper& secound) const {
+    return *(this->links[secound->inverse]);
 }
 
 bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {

@@ -26,7 +26,7 @@ public:
     bool checkAsso();
     bool checkNeutral();
     bool checkInvers();
-    void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu
+    void addElement(const Element& element); //Fügt ein Element der Gruppe hinzu, prüft jedoch nicht die Gruppenaxiome
     bool create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
     string getE(); //Gits das neutrale Element?
 
@@ -39,7 +39,7 @@ private:
     int order = 0; //Ordnung der Gruppe
     EW* e; //Das neutrale Element
     std::vector<EW> elemente;
-    
+       
 };
 
 #endif	/* GRUPPE_H */
