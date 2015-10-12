@@ -19,6 +19,16 @@ int main(int argc, char** argv) {
        Element t(i);
        menge.push_back(i);
    }
+   try {
    Gruppe gruppe(menge);
+   } catch (int e) {
+	   if(e==0) {
+		   cerr<<"Group creation aborted, since not all group axioms are satisfied. "<<endl;
+	   }
+	   else {
+		   cerr<<"Unknown error, program terminated!"<<endl;
+		   exit(1);
+	   }
+   }
     
 }

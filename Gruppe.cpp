@@ -22,27 +22,24 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
     if(!this->create()) {
         std::cerr<<"Nicht abgeschlossen"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is not closed."<<endl;
-        return;
     }
     else if(!this->checkNeutral()) {
         std::cerr<<"Kein neutrales Element"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is has no neutral element."<<endl;
-        return;
     }
     else if(!this->checkAsso()) {
         std::cerr<<"Nicht assoziativ"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is not associative."<<endl;
-        return;
     }
     else if(!this->checkInvers()) {
         std::cerr<<"Es existieren nicht für alle Elemente inverse"<<std::endl;
         std::cerr<<"Terminating group creation, since not all elements of the \'group\' have inverse elements."<<endl;
-        return;
     }
     else {
         std::cout<<"Group creation successful."<<endl;
+        return;
     }
-    return;
+    throw 0;
 }
 
 void Gruppe::addElement(const Element& element) {
