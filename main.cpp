@@ -23,12 +23,11 @@ int main(int argc, char** argv) {
         Gruppe gruppe(menge);
         cout << gruppe.getE() << endl;
     } catch (int e) {
-	if(e==0) {
+        if(e==0) {
             cerr<<"Group creation aborted, since not all group axioms are satisfied. "<<endl;
-	}
-	else {
+        } else {
             cerr<<"Unknown error, program terminated!"<<endl;
             exit(1);
-	}
+        }
     }   
 }

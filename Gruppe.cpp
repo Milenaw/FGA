@@ -9,7 +9,7 @@
 #include "ElementWrapper.h"
 
 Gruppe::Gruppe() {
-	order=0;
+    order=0;
 }
 
 Gruppe::Gruppe(std::vector<Element>& elemente) {
@@ -108,13 +108,13 @@ string Gruppe::getE() {
 
 bool Gruppe::checkInvers() {
     for(auto& a : elemente) {//suche nach dem Inversen von a
-	bool test=false;
-	for(auto& b : elemente) {
+        bool test=false;
+        for(auto& b : elemente) {
             if(a+b==*(this->e)) {
                 a.setInverse(b);
-		test=true;
-            }		
-	}
+                test=true;
+            }
+        }
         if(!test) {
             return false;
         }

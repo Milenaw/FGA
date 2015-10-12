@@ -26,7 +26,7 @@ ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) { //Ich w
     //this->id=left.id;
     //this->inverse=left.inverse;
     //this->links=left.links;
-	return *this;
+    return *this;
 }
 
 ElementWrapper::~ElementWrapper() {
