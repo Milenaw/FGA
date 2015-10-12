@@ -24,10 +24,12 @@ public:
     const ElementWrapper& operator-(const ElementWrapper& second) const;
     int getId();
     bool calculate(const std::vector<ElementWrapper>* alle);
-    int id=-1;
-    int inverse=-1;
+    void setInverse(ElementWrapper& inverse);
+    ElementWrapper& getInverse() const;
 private:
+    int id=-1;
     Element element; //Hier ist das Element drin, alles andere verweist auf diese Speicherstelle
+    ElementWrapper* inverse;
     std::vector<const ElementWrapper*> links;
 };
 

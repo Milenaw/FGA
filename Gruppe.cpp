@@ -39,7 +39,6 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
     else {
     std::cout<<"Group creation successful."<<endl;
     }
-    throw 0;
 }
 
 void Gruppe::addElement(const Element& element) {
@@ -111,7 +110,7 @@ bool Gruppe::checkInvers() {
 		bool test=false;
 		for(auto& b : elemente) {
 			if(a+b==*(this->e))
-				a.inverse=b.id;
+				a.setInverse(b);
 				test=true;
 		}
 		if(!test)

@@ -18,9 +18,9 @@ ElementWrapper::ElementWrapper(const ElementWrapper& orig): element(orig.element
     }
 }
 
-ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) {
+ElementWrapper& ElementWrapper::operator =(const ElementWrapper& left) { //Ich will nur nicht, dass der von der stl benutzt, wird ohne das ich es merke
     
-    //std::cout << "Ich werde zugewiesen" << std::endl;
+    std::cout << "Ich werde zugewiesen" << std::endl;
     
     //this->element=left.element;
     //this->id=left.id;
@@ -44,7 +44,7 @@ const ElementWrapper& ElementWrapper::operator +(const ElementWrapper& second) c
     return *(this->links[second.id]);
 }
 const ElementWrapper& ElementWrapper::operator -(const ElementWrapper& second) const {
-    return *(this->links[second.inverse]);
+    return *(this->links[second.inverse->id]);
 }
 
 bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
@@ -68,4 +68,16 @@ bool ElementWrapper::calculate(const std::vector<ElementWrapper>* alle) {
 
 string ElementWrapper::toString() const{
     return element.toString();
+}
+
+EW& EW::getInverse() const {
+    return *inverse;
+}
+
+void EW::setInverse(ElementWrapper& inverse) {
+    this->inverse = &inverse;
+}
+
+int EW::getId() {
+    return id;
 }
