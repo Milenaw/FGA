@@ -13,32 +13,36 @@ Gruppe::Gruppe() {
 }
 
 Gruppe::Gruppe(std::vector<Element>& elemente) {
-	asso=false;
-	closure=false;
-	order=0;
-	bool group=false;
-	for(auto a: elemente) {
+    asso=false;
+    closure=false;
+    order=0;
+    for(auto a: elemente) {
         this->addElement(a);
     }
     if(!this->create()) {
         std::cerr<<"Nicht abgeschlossen"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is not closed."<<endl;
+        return;
     }
     else if(!this->checkNeutral()) {
         std::cerr<<"Kein neutrales Element"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is has no neutral element."<<endl;
+        return;
     }
     else if(!this->checkAsso()) {
         std::cerr<<"Nicht assoziativ"<<std::endl;
         std::clog<<"Terminating group creation, since the \'group\' is not associative."<<endl;
+        return;
     }
     else if(!this->checkInvers()) {
         std::cerr<<"Es existieren nicht für alle Elemente inverse"<<std::endl;
         std::cerr<<"Terminating group creation, since not all elements of the \'group\' have inverse elements."<<endl;
+        return;
     }
     else {
-    std::cout<<"Group creation successful."<<endl;
+        std::cout<<"Group creation successful."<<endl;
     }
+    return;
 }
 
 void Gruppe::addElement(const Element& element) {
@@ -57,7 +61,7 @@ bool Gruppe::create() {
     for (unsigned int i = 0; i < elemente.size();++i) {
         if (!elemente[i].calculate(&elemente)) {
             closure=false;
-            return false;;
+            return false;
         }
     }
     closure=true;
@@ -81,7 +85,7 @@ bool Gruppe::checkNeutral() {
     for (auto& e : elemente) { //Über alle Elemente iterieren, die neutral sein könnten
         bool t = true;
         for (auto& a : elemente) { //Prüfen ob e neutral ist
-            if (!(e+a == a && a + e == a)) { //e ist nicht neutral
+            if (!(e+a == a && a+e == a)) { //e ist nicht neutral
                 t = false;
                 break;
             }
