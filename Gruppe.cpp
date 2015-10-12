@@ -107,15 +107,17 @@ string Gruppe::getE() {
 }
 
 bool Gruppe::checkInvers() {
-	for(auto& a : elemente) {//suche nach dem Inversen von a
-		bool test=false;
-		for(auto& b : elemente) {
-			if(a+b==*(this->e))
-				a.setInverse(b);
-				test=true;
-		}
-		if(!test)
-			return false;
+    for(auto& a : elemente) {//suche nach dem Inversen von a
+	bool test=false;
+	for(auto& b : elemente) {
+            if(a+b==*(this->e)) {
+                a.setInverse(b);
+		test=true;
+            }		
 	}
-	return true;
+        if(!test) {
+            return false;
+        }
+    }
+    return true;
 }

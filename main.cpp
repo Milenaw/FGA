@@ -14,21 +14,21 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-   vector<Element> menge;
-   for(int i=1; i<5;i++) {
-       Element t(i);
-       menge.push_back(i);
-   }
-   try {
-   Gruppe gruppe(menge);
-   } catch (int e) {
-	   if(e==0) {
-		   cerr<<"Group creation aborted, since not all group axioms are satisfied. "<<endl;
-	   }
-	   else {
-		   cerr<<"Unknown error, program terminated!"<<endl;
-		   exit(1);
-	   }
-   }
-    
+    vector<Element> menge;
+    for(int i=0; i<5;i++) {
+        Element t(i);
+        menge.push_back(t);
+    }
+    try {
+        Gruppe gruppe(menge);
+        cout << gruppe.getE() << endl;
+    } catch (int e) {
+	if(e==0) {
+            cerr<<"Group creation aborted, since not all group axioms are satisfied. "<<endl;
+	}
+	else {
+            cerr<<"Unknown error, program terminated!"<<endl;
+            exit(1);
+	}
+    }   
 }
