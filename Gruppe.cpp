@@ -9,43 +9,46 @@
 #include "ElementWrapper.h"
 
 Gruppe::Gruppe() {
-    order=0;
+    order = 0;
 }
 
 Gruppe::Gruppe(std::vector<Element>& elemente) {
-    asso=false;
-    closure=false;
-    order=0;
-    for(auto a: elemente) {
+    asso = false;
+    closure = false;
+    order = 0;
+    for (auto a: elemente) {
         this->addElement(a);
     }
-    if(!this->create()) {
-        std::cerr<<"Nicht abgeschlossen"<<std::endl;
-        std::clog<<"Terminating group creation, since the \'group\' is not closed."<<endl;
+    if (!this->create()) {
+        std::cerr << "Nicht abgeschlossen" << std::endl;
+        std::clog << "Terminating group creation, since the \'group\' is not closed." << endl;
     }
-    else if(!this->checkNeutral()) {
-        std::cerr<<"Kein neutrales Element"<<std::endl;
-        std::clog<<"Terminating group creation, since the \'group\' is has no neutral element."<<endl;
+    else if (!this->checkNeutral()) {
+        std::cerr << "Kein neutrales Element" << std::endl;
+        std::clog << "Terminating group creation, since the \'group\' is has no neutral element." << endl;
     }
-    else if(!this->checkAsso()) {
-        std::cerr<<"Nicht assoziativ"<<std::endl;
-        std::clog<<"Terminating group creation, since the \'group\' is not associative."<<endl;
+    else if (!this->checkAsso()) {
+        std::cerr << "Nicht assoziativ" << std::endl;
+        std::clog << "Terminating group creation, since the \'group\' is not associative." << endl;
     }
-    else if(!this->checkInvers()) {
-        std::cerr<<"Es existieren nicht für alle Elemente inverse"<<std::endl;
-        std::cerr<<"Terminating group creation, since not all elements of the \'group\' have inverse elements."<<endl;
+    else if (!this->checkInvers()) {
+        std::cerr << "Es existieren nicht für alle Elemente inverse" << std::endl;
+        std::cerr << "Terminating group creation, since not all elements of the \'group\' have inverse elements." <<
+        endl;
     }
     else {
-        std::cout<<"Group creation successful."<<endl;
+        std::cout << "Group creation successful." << endl;
+        this->calcOrders();
+        std::cout << "Orders claculation successful" << endl;
         return;
     }
     throw 0;
 }
 
 void Gruppe::addElement(const Element& element) {
-    for(auto& a: elemente) {
-	if(a == element) {
-            std::clog<<"Mehrfaches Element ignoriert"<<std::endl;
+    for (auto& a: elemente) {
+        if (a == element) {
+            std::clog << "Mehrfaches Element ignoriert" << std::endl;
             return;
         }
     }
@@ -55,13 +58,13 @@ void Gruppe::addElement(const Element& element) {
 }
 
 bool Gruppe::create() {
-    for (unsigned int i = 0; i < elemente.size();++i) {
+    for (unsigned int i = 0; i < elemente.size(); ++i) {
         if (!elemente[i].calculate(&elemente)) {
-            closure=false;
+            closure = false;
             return false;
         }
     }
-    closure=true;
+    closure = true;
     return true;
 }
 
@@ -69,7 +72,7 @@ bool Gruppe::checkAsso() {
     for (auto& a : elemente) {
         for (auto& b : elemente) {
             for (auto& c : elemente) {
-                if (!((a+b)+c == a +(b+c))) {
+                if (!((a + b) + c == a + (b + c))) {
                     return false;
                 }
             }
@@ -82,7 +85,7 @@ bool Gruppe::checkNeutral() {
     for (auto& e : elemente) { //Über alle Elemente iterieren, die neutral sein könnten
         bool t = true;
         for (auto& a : elemente) { //Prüfen ob e neutral ist
-            if (!(e+a == a && a+e == a)) { //e ist nicht neutral
+            if (!(e + a == a && a + e == a)) { //e ist nicht neutral
                 t = false;
                 break;
             }
@@ -97,8 +100,8 @@ bool Gruppe::checkNeutral() {
 }
 
 string Gruppe::getE() {
-    if(!neutral) {
-        if(!this->checkNeutral()) {
+    if (!neutral) {
+        if (!this->checkNeutral()) {
             throw 1;
         }
     }
@@ -107,17 +110,23 @@ string Gruppe::getE() {
 }
 
 bool Gruppe::checkInvers() {
-    for(auto& a : elemente) {//suche nach dem Inversen von a
-        bool test=false;
-        for(auto& b : elemente) {
-            if(a+b==*(this->e)) {
+    for (auto& a : elemente) {//suche nach dem Inversen von a
+        bool test = false;
+        for (auto& b : elemente) {
+            if (a + b == *(this->e)) {
                 a.setInverse(b);
-                test=true;
+                test = true;
             }
         }
-        if(!test) {
+        if (!test) {
             return false;
         }
     }
     return true;
+}
+
+void Gruppe::calcOrders() {
+    for(auto& i : elemente) {
+        i.calcOrder(*e);
+    }
 }

@@ -19,17 +19,17 @@ Element::Element(int number) {
 string Element::toString() const {
     string text = "Restklasse: ";
     stringstream ss;
-    ss<<this->number;
+    ss << this->number;
     string str;
-    ss>>str;
-    return text+=str;
+    ss >> str;
+    return text += str;
     //return text +=to_string(this->number);
 }
 
-bool Element::operator ==(const Element& secound) const{
+bool Element::operator==(const Element& secound) const {
     return this->number == secound.number;
 }
 
-Element::Element(const Element& first,const Element& secound) {
+Element::Element(const Element& first, const Element& secound) {
     this->number = (first.number * secound.number) % 5; //Das Stellt die Restklassen modulo 19 dar.
 }
