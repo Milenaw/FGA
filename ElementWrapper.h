@@ -28,7 +28,11 @@ public:
 
     const ElementWrapper& operator+(const ElementWrapper& second) const;
 
+    const ElementWrapper* operator+(const ElementWrapper* second) const;
+
     const ElementWrapper& operator-(const ElementWrapper& second) const;
+
+    const ElementWrapper* operator-(const ElementWrapper* second) const;
 
     int getId();
 

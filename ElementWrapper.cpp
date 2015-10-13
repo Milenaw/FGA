@@ -33,6 +33,14 @@ const ElementWrapper& ElementWrapper::operator+(const ElementWrapper& second) co
     return *(this->links[second.id]);
 }
 
+const ElementWrapper* ElementWrapper::operator+(const ElementWrapper* second) const {
+    return this->links[(*second).id];
+}
+
+const ElementWrapper* ElementWrapper::operator-(const ElementWrapper* second) const {
+    return this->links[(*second).inverse->id];
+}
+
 const ElementWrapper& ElementWrapper::operator-(const ElementWrapper& second) const {
     return *(this->links[second.inverse->id]);
 }
@@ -76,7 +84,7 @@ int EW::calcOrder(EW& e) {
     const EW* temp = this;
     int counter = 1;
     while(!(*temp == e)) {
-        temp = &(*temp + *this);
+        temp = *temp + this;
         counter++;
     }
     this->order = counter;
