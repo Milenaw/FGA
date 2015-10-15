@@ -49,6 +49,8 @@ private:
     EW* e; //Das neutrale Element
     std::vector<EW> elemente;
 
+    std::vector<std::vector<EW*>> subgroups;
+
     void calcOrders();
 
 };

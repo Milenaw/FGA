@@ -44,6 +44,8 @@ public:
 
     int calcOrder(ElementWrapper& e);
 
+    int getOrder();
+
 private:
     int id = -1;
     int order = -1;
