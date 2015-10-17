@@ -35,12 +35,11 @@ public:
 
     bool create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
 
-    string getE(); //Gits das neutrale Element?
+    string getE(); //Gibt das neutrale Element aus
 
 private:
     bool closure = false; //Abgeschlossen?
-    bool asso = false;
-    //assoziativ?
+    bool asso = false;    //assoziativ?
     bool neutral = false;
     //Gibt es neutrales Element?
     bool inverse = false;//existieren Inverse?
