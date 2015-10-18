@@ -37,6 +37,8 @@ public:
 
     string getE(); //Gibt das neutrale Element aus
 
+    bool iscyclic();
+
 private:
     bool closure = false; //Abgeschlossen?
     bool asso = false;    //assoziativ?
@@ -51,6 +53,7 @@ private:
     std::vector<std::vector<EW*>> subgroups;
 
     void calcOrders();
+    bool cyclic=false;
 
 };
 

@@ -20,10 +20,10 @@ using namespace std;
 
 class Generator {
 public:
-	Generator(vector<const EW&> elemente);
+	Generator(vector<const EW*> elemente);
 	vector<const Generator*> findGenerators(const Gruppe& group);
 private:
-	vector<const EW*> Elemente;
+	vector<const ElementWrapper*> Elemente;
 };
 
 #endif	/*GENERATORS_H*/

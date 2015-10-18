@@ -130,3 +130,7 @@ void Gruppe::calcOrders() {
         i.calcOrder(*e);
     }
 }
+
+bool Gruppe::iscyclic() {
+	return this->cyclic;
+}
