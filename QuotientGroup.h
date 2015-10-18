@@ -5,8 +5,8 @@
  * Created on October 17, 2015
  */
 
-#ifndef GENERATORS_H
-#define    GENERATORS_H
+#ifndef QUOTIENTGROUP_H
+#define    QUOTIENTGROUP_H
 
 #include <vector>
 #include <cstdlib>
@@ -15,16 +15,15 @@
 
 #include "ElementWrapper.h"
 #include "Gruppe.h"
-#include "QuotientGroup.h"
 
 using namespace std;
 
-class Generator {
-public:
-	Generator(vector<const EW*> elemente);
-	vector<const Generator*> findGenerators(const Gruppe& group);
-private:
-	vector<const ElementWrapper*> Elemente;
-};
+class Gruppe;
 
+class QuotientGroup : Gruppe {
+public:
+	QuotientGroup(Gruppe& G);
+	QuotientGroup(QuotientGroup& G);
+	QuotientGroup(const Gruppe& G, const EW& g);
+};
 #endif	/*GENERATORS_H*/

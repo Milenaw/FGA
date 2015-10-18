@@ -14,16 +14,21 @@
 #include <string>
 
 #include "ElementWrapper.h"
+//#include "Generator.h"
 
 using namespace std;
 
 class Element;
+class Generator;
 
 class Gruppe {
+	friend Generator;
 public:
     Gruppe();
 
-    Gruppe(vector<Element>& elemente);
+    Gruppe(vector<Element>& elements);
+
+//    Gruppe(vector<EW> elements);
 
     bool checkAsso();
 
@@ -35,11 +40,13 @@ public:
 
     bool create(); //Erstellt die Verknüpfungstabelle, prüft ob die Gruppe abgeschlossen ist
 
+    void calculateCyclicSubgroups();
+
     string getE(); //Gibt das neutrale Element aus
 
     bool iscyclic();
 
-private:
+protected:
     bool closure = false; //Abgeschlossen?
     bool asso = false;    //assoziativ?
     bool neutral = false;
@@ -54,7 +61,6 @@ private:
 
     void calcOrders();
     bool cyclic=false;
-
 };
 
 #endif	/* GRUPPE_H */

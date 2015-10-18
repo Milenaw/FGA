@@ -22,7 +22,11 @@ public:
 
     bool operator==(const ElementWrapper& second) const;
 
+    bool operator!=(const ElementWrapper& second) const;
+
     bool operator==(const Element& second) const;
+
+    bool operator!=(const Element& second) const;
 
     string toString() const;
 
@@ -45,7 +49,8 @@ public:
     int calcOrder(ElementWrapper& e);
 
     int getOrder();
-
+    std::vector<const ElementWrapper*> generatedCyclicSubgroup;
+    const Element getElement();
 private:
     int id = -1;
     int order = -1;

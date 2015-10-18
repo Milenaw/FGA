@@ -37,6 +37,7 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
         endl;
     }
     else {
+    	this->calculateCyclicSubgroups();
         std::cout << "Group creation successful." << endl;
         this->calcOrders();
         std::cout << "Orders claculation successful" << endl;
@@ -44,6 +45,15 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
     }
     throw 0;
 }
+
+//Gruppe::Gruppe(vector<EW> ews) {
+//	vector<const Element> elements;
+//	for(auto a:ews) {
+//		Element out=a->getElement();
+//		elements.push_back(a->getElement());
+//
+//	}
+//}
 
 void Gruppe::addElement(const Element& element) {
     for (auto& a: elemente) {
@@ -66,6 +76,23 @@ bool Gruppe::create() {
     }
     closure = true;
     return true;
+}
+
+void Gruppe::calculateCyclicSubgroups() {
+	for (unsigned int i = 0; i < elemente.size(); ++i) {
+		int j=0;
+		EW current=elemente[i];
+		EW start=current;
+		elemente[i].generatedCyclicSubgroup[0]=&start;
+		while(current!=*this->e) {
+			j++;
+			current=start+current;
+			elemente[i].generatedCyclicSubgroup[j]=&current;
+			if(j==this->order) {
+				this->cyclic=true;
+			}
+		}
+	}
 }
 
 bool Gruppe::checkAsso() {
@@ -134,3 +161,4 @@ void Gruppe::calcOrders() {
 bool Gruppe::iscyclic() {
 	return this->cyclic;
 }
+
