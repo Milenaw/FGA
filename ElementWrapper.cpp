@@ -25,8 +25,16 @@ bool ElementWrapper::operator==(const ElementWrapper& second) const {
     return this->id == second.id;
 }
 
+bool ElementWrapper::operator!=(const ElementWrapper& second) const {
+    return this->id != second.id;
+}
+
 bool ElementWrapper::operator==(const Element& second) const {
     return this->element == second;
+}
+
+bool ElementWrapper::operator!=(const Element& second) const {
+    return !(this->element == second);
 }
 
 const ElementWrapper& ElementWrapper::operator+(const ElementWrapper& second) const {
@@ -89,4 +97,8 @@ int EW::calcOrder(EW& e) {
     }
     this->order = counter;
     return counter;
+}
+
+const Element ElementWrapper::getElement() {
+	return this->element;
 }
