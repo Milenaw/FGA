@@ -162,3 +162,14 @@ bool Gruppe::iscyclic() {
 	return this->cyclic;
 }
 
+int Gruppe::getOrder() {
+	return this->order;
+}
+
+vector<EW*> Gruppe::getElemente() {
+	vector<EW*> res;
+	for(auto a:elemente) {
+		res.push_back(&a);
+	}
+	return res;
+}

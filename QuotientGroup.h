@@ -22,8 +22,9 @@ class Gruppe;
 
 class QuotientGroup : Gruppe {
 public:
+	QuotientGroup();
 	QuotientGroup(Gruppe& G);
 	QuotientGroup(QuotientGroup& G);
-	QuotientGroup(const Gruppe& G, const EW& g);
+	QuotientGroup(Gruppe& G, const EW& g);
 };
 #endif	/*GENERATORS_H*/

@@ -45,6 +45,8 @@ public:
     string getE(); //Gibt das neutrale Element aus
 
     bool iscyclic();
+    int getOrder();
+    vector<EW*> getElemente();
 
 protected:
     bool closure = false; //Abgeschlossen?
