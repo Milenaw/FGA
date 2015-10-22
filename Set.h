@@ -20,7 +20,8 @@ public:
 
     Set merge(const Set& other) const;
     Set intersection(const Set& other) const;
-    std::vector<EW*> get(const std::vector<EW>& all) const;
+    std::vector<EW*> get() const;
+    void add(EW* element);
     int order() const; //Number of element in the set
 
 private:

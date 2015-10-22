@@ -17,15 +17,26 @@ template <int ORDER> Set<ORDER>::Set(const Set& origin) {
 }
 
 template <int ORDER> Set<ORDER> Set<ORDER>::merge(const Set& other) const {
-    Set<ORDER> set;
+    Set<ORDER> set(all);
     set.bitset = this->bitset |= other.bitset;
-    set.all = this->all;
     return set;
 }
 
 template <int ORDER> Set<ORDER> Set<ORDER>::intersection(const Set& other) const {
-    Set<ORDER> set;
+    Set<ORDER> set(all);
     set.bitset = this->bitset &= other.bitset;
-    set.all = this->all;
     return set;
+}
+
+template <int ORDER> std::vector<EW*> Set<ORDER>::get() const {
+    std::vector<EW*> result;
+    for (int i = 0 ; i < ORDER ; ++i) {
+        if (bitset[i] == 1) {
+            result.push_back(&(all->at(i)));
+        }
+    }
+}
+
+template <int ORDER> void Set<ORDER>::add(EW* element) {
+    bitset[element->getId()] = 1;
 }
