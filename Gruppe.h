@@ -14,6 +14,7 @@
 #include <string>
 
 #include "ElementWrapper.h"
+#include "Set.h"
 //#include "Generator.h"
 
 using namespace std;
@@ -51,18 +52,19 @@ public:
 protected:
     bool closure = false; //Abgeschlossen?
     bool asso = false;    //assoziativ?
-    bool neutral = false;
-    //Gibt es neutrales Element?
+    bool neutral = false; //Gibt es neutrales Element?
+    bool cyclic=false; //Cyclic Group?
     bool inverse = false;//existieren Inverse?
 
     int order = -1; //Ordnung der Gruppe
     EW* e; //Das neutrale Element
     std::vector<EW> elemente;
 
-    std::vector<std::vector<EW*>> subgroups;
+    std::vector<Set> subgroups;
+
+
 
     void calcOrders();
-    bool cyclic=false;
 };
 
 #endif	/* GRUPPE_H */

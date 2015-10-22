@@ -4,39 +4,39 @@
 
 #include "Set.h"
 
-
-
-template <int ORDER> Set<ORDER>::Set(std::vector<EW>* all) {
-    this->bitset.reset();
-    this->all = all;
+Set::Set(int order, std::vector<EW>* all) : order(order), all(all), bitset(order) {
 }
 
-template <int ORDER> Set<ORDER>::Set(const Set& origin) {
+Set::~Set() {
+
+}
+
+Set::Set(const Set& origin) {
     this->bitset = origin.bitset;
     this->all = origin.all;
 }
 
-template <int ORDER> Set<ORDER> Set<ORDER>::merge(const Set& other) const {
-    Set<ORDER> set(all);
-    set.bitset = this->bitset |= other.bitset;
+Set Set::merge(const Set& other) const {
+    Set set(order, all);
+    set.bitset = this->bitset | other.bitset;
     return set;
 }
 
-template <int ORDER> Set<ORDER> Set<ORDER>::intersection(const Set& other) const {
-    Set<ORDER> set(all);
-    set.bitset = this->bitset &= other.bitset;
+Set Set::intersection(const Set& other) const {
+    Set set(order, all);
+    set.bitset = this->bitset & other.bitset;
     return set;
 }
 
-template <int ORDER> std::vector<EW*> Set<ORDER>::get() const {
+std::vector<EW*> Set::get() const {
     std::vector<EW*> result;
-    for (int i = 0 ; i < ORDER ; ++i) {
+    for (int i = 0 ; i < order ; ++i) {
         if (bitset[i] == 1) {
             result.push_back(&(all->at(i)));
         }
     }
 }
 
-template <int ORDER> void Set<ORDER>::add(EW* element) {
+void Set::add(EW* element) {
     bitset[element->getId()] = 1;
 }

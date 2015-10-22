@@ -16,7 +16,7 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
     asso = false;
     closure = false;
     order = 0;
-    for (auto a: elemente) {
+    for (auto& a: elemente) {
         this->addElement(a);
     }
     if (!this->create()) {
@@ -45,15 +45,6 @@ Gruppe::Gruppe(std::vector<Element>& elemente) {
     }
     throw 0;
 }
-
-//Gruppe::Gruppe(vector<EW> ews) {
-//	vector<const Element> elements;
-//	for(auto a:ews) {
-//		Element out=a->getElement();
-//		elements.push_back(a->getElement());
-//
-//	}
-//}
 
 void Gruppe::addElement(const Element& element) {
     for (auto& a: elemente) {
@@ -168,7 +159,7 @@ int Gruppe::getOrder() {
 
 vector<EW*> Gruppe::getElemente() {
 	vector<EW*> res;
-	for(auto a:elemente) {
+	for(auto& a:elemente) {
 		res.push_back(&a);
 	}
 	return res;
