@@ -28,8 +28,6 @@ QuotientGroup::QuotientGroup(QuotientGroup& Q) : QuotientGroup(reinterpret_cast<
 
 QuotientGroup::QuotientGroup(Gruppe& G, const EW& g) {
 	vector<EW*> res;
-	//TODO:
-	//Implement the real functionality
 	vector<vector<EW*>> classes;
 	vector<EW*> still;
 	for(int i=0; i<G.getOrder();i++) {
