@@ -25,7 +25,7 @@ public:
     Set intersection(const Set& other);
     std::vector<T*> get() const;
     int order() const; //Number of elements in the set
-    Set<T>& operator=(const Set& other);
+    const Set<T>& operator=(const Set& other);
     bool operator==(const Set& second);
 private:
     std::vector<T*> elements; //Pointer to the original Elements

@@ -97,13 +97,22 @@ bool Set<T>::elementOfSubset(const Set<Set>& S) {
 }
 
 template <class T>
-Set<T>& Set<T>::operator =(const Set<T>& other) {
+const Set<T>& Set<T>::operator =(const Set<T>& other) {
 	vector<const T*> result=other.elements;
-	Set<T> ret(result);
-	return ret;
+	Set<T>* ret;
+	ret=new Set<T>(result);
+	return *ret;
 }
 
 template <class T>
 bool Set<T>::operator ==(const Set<T>& second) {
-
+	if(this->elements.size()!=second.elements.size()) {
+		return false;
+	}
+	for(auto a: this->elements) {
+		if(!second.isElement(*a)) {
+			return false;
+		}
+	}
+	return true;
 }

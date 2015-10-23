@@ -74,9 +74,8 @@ Set<const Generator> Generator::findGenerators(const Gruppe& G) {
 	vector<QuotientGroup*> Q;
 	vector<const EW*> gen;
 	Gruppe* inp=&const_cast<Gruppe&>(G);
-	QuotientGroup cur=*new QuotientGroup(*inp);
 
-	Q.push_back(&cur);
+	Q.push_back(new QuotientGroup(*inp));
 	int count=0;
 	while(reinterpret_cast<Gruppe*>(Q[count])->getOrder()>1) {
 		Gruppe* current=reinterpret_cast<Gruppe*>(Q[count]);
@@ -93,6 +92,9 @@ Set<const Generator> Generator::findGenerators(const Gruppe& G) {
 		gen.push_back(g);
 		Q.push_back(new QuotientGroup(*current, *g));
 		count++;
+	}
+	for(auto a: Q) {
+		delete a;
 	}
 	const Generator generator(gen);
 	vector<const Generator*> result;
