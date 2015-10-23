@@ -14,7 +14,7 @@
 #include <string>
 
 #include "ElementWrapper.h"
-#include "Set.h"
+#include "Subset.h"
 //#include "Generator.h"
 
 using namespace std;
@@ -60,7 +60,7 @@ protected:
     EW* e; //Das neutrale Element
     std::vector<EW> elemente;
 
-    std::vector<Set> subgroups;
+    std::vector<Subset> subgroups;
 
 
 
