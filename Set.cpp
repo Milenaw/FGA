@@ -11,7 +11,8 @@
 
 using namespace std;
 template <class T>
-Set<T>::Set(void){
+Set<T>::Set() {
+//Set<T>::Set(void) {
 	//vector<T*> empty;
 	//this->elements=empty;
 }

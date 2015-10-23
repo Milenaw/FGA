@@ -16,15 +16,17 @@
 #include "ElementWrapper.h"
 #include "Gruppe.h"
 #include "QuotientGroup.h"
+#include "Set.h"
 
 using namespace std;
 
 class Generator {
 public:
-	Generator(vector<const EW*> elemente);
-	vector<const Generator*> findGenerators(const Gruppe& group);
+	Generator(Set<const EW> elements);
+	Set<const Generator> findGenerators(const Gruppe& group);
+	bool operator==(const Generator& Gen) const;
 private:
-	vector<const ElementWrapper*> Elemente;
+	Set<const ElementWrapper> Elemente;
 };
 
 #endif	/*GENERATORS_H*/

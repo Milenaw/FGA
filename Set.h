@@ -5,18 +5,14 @@
 #ifndef FGA_SET_H
 #define FGA_SET_H
 #include <vector>
-//#include "Set.cpp"
-
-//This class should represent a set of Elements. The operations of add an element, check whether an element is in the set , merging, and intersection, should be implemented
 
 template <class T>
 class Set {
 public:
-	Set(void);
+	Set();
     Set(std::vector<T*>& elements);
     Set(const Set<T>& origin);
 
-    //void addElement(const T& element);
     void addElement(const T& element);
     bool isElement(const T& element);
     bool isSubset(const Set& S);

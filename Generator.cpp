@@ -6,16 +6,28 @@
 #include "ElementWrapper.h"
 #include "Gruppe.h"
 #include "Generator.h"
+#include "Set.h"
+#include "Set.cpp"
 
 using namespace std;
 
-Generator::Generator(vector<const EW*> elemente) {
-	for(unsigned int i=0; i<elemente.size();i++) {
-		this->Elemente.push_back(elemente[i]);
-	}
+Generator::Generator(Set<const EW> elements) {
+	this->Elemente=*new Set<const EW>(elements);
 }
 
-vector<const Generator*> Generator::findGenerators(const Gruppe& G) {
+bool Generator::operator==(const Generator& Gen) const {
+	if(this->Elemente.order()!=Gen.Elemente.order()) {
+		return false;
+	}
+	for(int i=0; i<this->Elemente.order(); i++) {
+		if(*(this->Elemente.get()[i])!=*(Gen.Elemente.get()[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+Set<const Generator> Generator::findGenerators(const Gruppe& G) {
 	/*used (greedy) Algorithm:
 	1. Step:
 		Check whether the group G with order n is cyclic
@@ -39,9 +51,9 @@ vector<const Generator*> Generator::findGenerators(const Gruppe& G) {
 	//Starting with step 1:
 	if(G.cyclic) {
 		const EW* g;
-		vector<const Generator*> result;
-		for(auto a:this->Elemente) {
-			if(a->generatedCyclicSubgroup.size()==(unsigned)G.order) {
+		Set<const Generator> result;
+		for(auto a: this->Elemente.get()) {
+			if((*a).generatedCyclicSubgroup.size()==(unsigned)G.order) {
 				g=a;
 				break;
 			}
@@ -50,22 +62,20 @@ vector<const Generator*> Generator::findGenerators(const Gruppe& G) {
 			if(i%G.order) {
 				vector<const EW*> res;
 				res.push_back(g->generatedCyclicSubgroup[i]);
-				const Generator resgen(res);
-				result.push_back(&resgen);
+				Set<const EW> next(res);
+				const Generator gennext(next);
+				result.addElement(gennext);
 			}
 		}
 		return result;
 	}
 	//Continuing with step 2
 
-	//TODO: Implement it, using code from QuotientGroup
-	//Finish the main constructor there doing the real work.
 	vector<QuotientGroup*> Q;
 	vector<const EW*> gen;
 	Gruppe* inp=&const_cast<Gruppe&>(G);
-	QuotientGroup cur=*new QuotientGroup(*inp);
 
-	Q.push_back(&cur);
+	Q.push_back(new QuotientGroup(*inp));
 	int count=0;
 	while(reinterpret_cast<Gruppe*>(Q[count])->getOrder()>1) {
 		Gruppe* current=reinterpret_cast<Gruppe*>(Q[count]);
@@ -82,6 +92,9 @@ vector<const Generator*> Generator::findGenerators(const Gruppe& G) {
 		gen.push_back(g);
 		Q.push_back(new QuotientGroup(*current, *g));
 		count++;
+	}
+	for(auto a: Q) {
+		delete a;
 	}
 	const Generator generator(gen);
 	vector<const Generator*> result;
